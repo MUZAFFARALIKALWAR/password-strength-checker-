@@ -45,24 +45,9 @@ def check_password_strength(password):
         return "\n".join(feedback), "Weak"
 
 
-# Streamlit UI with enhanced design
-st.set_page_config(page_title="Password Strength Meter", page_icon="🔐", layout="centered")
-
-st.sidebar.title("🔑 Password History")
-if 'password_history' not in st.session_state:
-    st.session_state.password_history = []
 
 for i, past_password in enumerate(st.session_state.password_history[-5:], 1):  
     st.sidebar.write(f"{i}. {past_password}")
-
-st.markdown("""
-    <style>
-        .main {background-color: #f0f2f6;}
-        h1 {color: #2E86C1; text-align: center;}
-        .stTextInput>div>div>input {text-align: center;}
-        .stButton>button {background-color: #2E86C1; color: white; width: 100%; border-radius: 10px;}
-    </style>
-""", unsafe_allow_html=True)
 
 st.title("🔐 Password Strength Meter")
 st.write("Enter your password below to check its strength:")
