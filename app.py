@@ -45,10 +45,6 @@ def check_password_strength(password):
         return "\n".join(feedback), "Weak"
 
 
-
-for i, past_password in enumerate(st.session_state.password_history[-5:], 1):  
-    st.sidebar.write(f"{i}. {past_password}")
-
 st.title("🔐 Password Strength Meter")
 st.write("Enter your password below to check its strength:")
 
@@ -56,7 +52,6 @@ password = st.text_input("Enter your password:", type="password")
 
 if st.button("Check Strength"):
     if password:
-        st.session_state.password_history.append(password)
         result, strength = check_password_strength(password)
         if strength == "Strong":
             st.success(result)
